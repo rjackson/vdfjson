@@ -1,19 +1,18 @@
 import json
 import os
 # import uwsgi
-
 import vdf
 import web
 #web.config.debug = False
 
 path = os.path.dirname(os.path.abspath(__file__))
 
-urls = ("/vdfjson/img/(.*)", 'images',
-        "/vdfjson/css/(.*)", 'css',
-        "/vdfjson/js/(.*)", 'js',
-        "/vdfjson/", 'index')
+urls = ("/img/(.*)", 'images',
+        "/css/(.*)", 'css',
+        "/js/(.*)", 'js',
+        "/?", 'index')
 
-render = web.template.render('templates')
+render = web.template.render(os.path.join(path, 'templates'), base='layout')
 
 
 class index:

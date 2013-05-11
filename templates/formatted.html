@@ -1,83 +1,9 @@
-$def with (data, format)
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>VDF&lt;-&gt;JSON</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
+$var title: VDF&lt;-&gt;JSON
+$var lead: VDF&lt;-&gt;JSON
+$var nav_id: vdfjson
 
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-      }
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 60px;
-      }
-      #footer {
-        background-color: #f5f5f5;
-      }
-      #footer p {
-        margin: 20px 0;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
-
-    </style>
-  </head>
-
-  <body>
-    <body>
-      <div id="wrap">
-        <div class="container">
-          <h1>VDF&lt;-&gt;JSON</h1>
-          <p>A simple tool to convert between <a href="http://wiki.teamfortress.com/wiki/WebAPI/VDF" title="Valve Data Format on the Team Fortress Wiki">Valve Data Format</a> and <a href="http://json.org/" title="Pls, you already know what JSON is.">JSON</a>.</p>
-          <form  class="span12">
-            <textarea class="span12" style="font-family: monospace;" rows="20" readonly>$:data</textarea>
-            <button class="btn btn-large" style="width:100%;" href="/">Return to index.</button>
-          </form>
-        </div>
-
-        <div id="push"></div>
-      </div>
-
-      <div id="footer">
-        <div class="container">
-          <p class="muted">
-            <a href="mailto:&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#064;&#119;&#105;&#107;&#105;&#046;&#116;&#102;">&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#064;&#119;&#105;&#107;&#105;&#046;&#116;&#102;</a> dun this.
-            <a href="http://github.com/RJacksonm1/vdfjson">Code on GitHub.</a>
-            Uses Lagg's vdf.py from <a href="http://github.com/Lagg/steamodd">steamodd</a>.
-          </p>
-        </div>
-      </div>
-    </body>
-
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>
+<p>A simple tool to convert between <a href="http://wiki.teamfortress.com/wiki/WebAPI/VDF" title="Valve Data Format on the Team Fortress Wiki">Valve Data Format</a> and <a href="http://json.org/" title="Pls, you already know what JSON is.">JSON</a>.</p>
+<form  class="span12">
+  <textarea class="span12" style="font-family: monospace;" rows="20" readonly>$:data</textarea>
+  <button class="btn btn-large" style="width:100%;" href="/">Return to index.</button>
+</form>

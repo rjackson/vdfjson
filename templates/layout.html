@@ -1,0 +1,78 @@
+$def with (content)
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>$content.get("title", "rjackson.me")</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+      /* Wrapper for page content to push down footer */
+      .wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      .push,
+      .footer {
+        height: 60px;
+      }
+      .footer {
+        background-color: #f5f5f5;
+      }
+      .footer p {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <body>
+      <div class="wrap">
+        <div class="navbar navbar-static-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav span5">
+                <li class="$("active" if content.nav_id == "index" else "")">
+                  <a href="/">/</a>
+                </li>
+                <li class="$("active" if content.nav_id == "kit" else "")">
+                  <a href="/kit">/kit</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <h1 class="text-center">RJackson</h1>
+          <p class="lead text-center">$:content.get("lead", "")</p>
+          <hr/>
+          $:content
+        </div>
+
+        <div class="push"></div>
+      </div>
+
+      <div class="footer">
+        <div class="container">
+          <p class="muted">
+            <a href="mailto:&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;">&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;</a>.
+            <a href="http://github.com/RJacksonm1/vdfjson">Code on GitHub.</a>
+            Uses Lagg's vdf.py from <a href="http://github.com/Lagg/steamodd">steamodd</a>.
+          </p>
+        </div>
+      </div>
+    </body>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
