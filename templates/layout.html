@@ -35,42 +35,53 @@ $def with (content)
   </head>
 
   <body>
-    <body>
-      <div class="wrap">
-        <div class="navbar navbar-static-top">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav span5">
-                <li class="$("active" if content.nav_id == "index" else "")">
-                  <a href="/">/</a>
-                </li>
-                <li class="$("active" if content.nav_id == "kit" else "")">
-                  <a href="/kit">/kit</a>
-                </li>
-              </ul>
-            </div>
+    <div class="wrap">
+      <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav span5">
+              <li class="$("active" if content.nav_id == "index" else "")">
+                <a href="/">/</a>
+              </li>
+              <li class="dropdown $("active" if content.nav_id in ["vdfjson"] else "")">
+                <a class="dropdown-toggle"
+                   data-toggle="dropdown"
+                   href="#">
+                    /tools
+                    <b class="caret"></b>
+                  </a>
+                <ul class="dropdown-menu">
+                  <li class="$("active" if content.nav_id in ["vdfjson"] else "")">
+                    <a href="/tools/vdfjson">/vdfjson</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="$("active" if content.nav_id == "kit" else "")">
+                <a href="/kit">/kit</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="container">
-          <h1 class="text-center">RJackson</h1>
-          <p class="lead text-center">$:content.get("lead", "")</p>
-          <hr/>
-          $:content
-        </div>
-
-        <div class="push"></div>
+      </div>
+      <div class="container">
+        <h1 class="text-center">RJackson</h1>
+        <p class="lead text-center">$:content.get("lead", "")</p>
+        <hr/>
+        $:content
       </div>
 
-      <div class="footer">
-        <div class="container">
-          <p class="muted">
-            <a href="mailto:&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;">&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;</a>.
-            <a href="http://github.com/RJacksonm1/vdfjson">Code on GitHub.</a>
-            Uses Lagg's vdf.py from <a href="http://github.com/Lagg/steamodd">steamodd</a>.
-          </p>
-        </div>
+      <div class="push"></div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <p class="muted">
+          <a href="mailto:&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;">&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;</a>.
+          <a href="http://github.com/RJacksonm1/vdfjson">Code on GitHub.</a>
+          Uses Lagg's vdf.py from <a href="http://github.com/Lagg/steamodd">steamodd</a>.
+        </p>
       </div>
-    </body>
+    </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

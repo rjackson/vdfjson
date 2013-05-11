@@ -10,9 +10,15 @@ path = os.path.dirname(os.path.abspath(__file__))
 urls = ("/img/(.*)", 'images',
         "/css/(.*)", 'css',
         "/js/(.*)", 'js',
-        "/?", 'index')
+        "", 'poot_index',
+        "/", 'index')
 
 render = web.template.render(os.path.join(path, 'templates'), base='layout')
+
+
+class poot_index:
+    def GET(self):
+        raise web.seeother("/")
 
 
 class index:
