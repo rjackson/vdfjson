@@ -1,7 +1,7 @@
 import json
 import os
 # import uwsgi
-import vdf
+from steam import vdf
 import web
 #web.config.debug = False
 
@@ -28,18 +28,24 @@ class index:
     def POST(self):
         _input = web.input()
         format = _input.get("format")
+        error = False
 
-        if format == "vdf":
-            data = json.dumps(
-                vdf.loads(_input.get("data")),
-                indent=4
-            )
+        try:
+            if format == "vdf":
+                data = json.dumps(
+                    vdf.loads(_input.get("data")),
+                    indent=4
+                )
 
-        if format == "json":
-            _data = json.loads(_input.get("data"))
-            data = vdf.dumps(_data).decode("utf-16")
+            elif format == "json":
+                _data = json.loads(_input.get("data"))
+                data = vdf.dumps(_data).decode("utf-16")
 
-        return render.formatted(data, format)
+        except ValueError:
+            data = "{}" if format == json else ""
+            error = True
+
+        return render.formatted(data, format, error)
 
 
 class images:
