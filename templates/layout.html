@@ -4,7 +4,7 @@ $def with (content)
   <head>
     <title>$content.get("title", "rjackson.me")</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style type="text/css">
       html,
       body {
@@ -36,31 +36,13 @@ $def with (content)
 
   <body>
     <div class="wrap">
-      <div class="navbar navbar-static-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <ul class="nav span5">
-              <li class="$("active" if content.nav_id == "index" else "")">
-                <a href="/">/</a>
-              </li>
-              <li class="dropdown $("active" if content.nav_id in ["vdfjson"] else "")">
-                <a class="dropdown-toggle"
-                   data-toggle="dropdown"
-                   href="#">
-                    /tools
-                    <b class="caret"></b>
-                  </a>
-                <ul class="dropdown-menu">
-                  <li class="$("active" if content.nav_id in ["vdfjson"] else "")">
-                    <a href="/tools/vdfjson">/vdfjson</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="$("active" if content.nav_id == "kit" else "")">
-                <a href="/kit">/kit</a>
-              </li>
-            </ul>
-          </div>
+      <div style="background:#f5f5f5;height:36px">
+        <div class="container">
+          <ul class="breadcrumb">
+            <li><a href="/">.</a> <span class="divider">/</span></li>
+            <li><a href="/tools"/>tools</a> <span class="divider">/</span></li>
+            <li class="active">vdfjson</li>
+          </ul>
         </div>
       </div>
       <div class="container">
@@ -84,6 +66,6 @@ $def with (content)
     </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
