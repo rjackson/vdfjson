@@ -1,71 +1,105 @@
-$def with (content)
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>$content.get("title", "rjackson.me")</title>
-    <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-      }
-      /* Wrapper for page content to push down footer */
-      .wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{title}}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-      /* Set the fixed height of the footer here */
-      .push,
-      .footer {
-        height: 60px;
-      }
-      .footer {
-        background-color: #f5f5f5;
-      }
-      .footer p {
-        margin: 20px 0;
-      }
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+    {%- block style %}
+    <style>
+        // Fack you bootstrap3, nav-list is my favourite list.
+        .nav-list {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-bottom: 0;
+        }
+        .nav-header {
+            display: block;
+            padding: 3px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 20px;
+            color: hsl(0, 0%, 60%);
+            text-shadow: 0 1px 0 hsla(0, 100%, 100%, 0.5);
+            text-transform: uppercase;
+        }
+        .nav-list>li>a,
+        .nav-list .nav-header {
+            padding: 3px 15px;
+            margin-left: -15px;
+            margin-right: -15px;
+            text-shadow: 0 1px 0 hsla(0, 100%, 100%, 0.5);
+        }
+        .nav li+.nav-header {
+            margin-top: 9px;
+        }
+        .nav-list .divider {
+            height: 2px;
+            margin: 9px 1px;
+            overflow: hidden;
+            background-color: hsl(0, 0%, 90%);
+            border-bottom: 1px solid hsl(0, 100%, 100%);
+        }
+        .nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus {
+            color: hsl(0, 100%, 100%);
+            text-shadow: 0 -1px 0 hsla(0, 0%, 0%, 0.2);
+            background-color: hsl(200, 100%, 40%);
+        }
     </style>
-  </head>
+    {%- endblock style %}
+</head>
 
-  <body>
-    <div class="wrap">
-      <div style="background:#f5f5f5;height:36px">
-        <div class="container">
-          <ul class="breadcrumb">
-            <li><a href="/">.</a> <span class="divider">/</span></li>
-            <li><a href="/tools"/>tools</a> <span class="divider">/</span></li>
-            <li class="active">vdfjson</li>
-          </ul>
-        </div>
-      </div>
-      <div class="container">
-        <h1 class="text-center">RJackson</h1>
-        <p class="lead text-center">$:content.get("lead", "")</p>
+<body>
+    <div class="container">
+        <h1 class="text-center">RJackson.me</h1>
+        <p class="lead text-center">{% block tagline %}{% endblock %}</p>
         <hr/>
-        $:content
-      </div>
-
-      <div class="push"></div>
+        <div class="row">
+            <div class="col-xs-2">
+                <ul class="nav nav-list">
+                    <li class="nav-header">RJackson.me</li>
+                    <li class="divider"></li>
+                    <li class="nav-header">© RJ, probably</li>
+                </ul>
+            </div>
+            <div class="col-xs-10 col-md-8">
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <div class="flash alert {{ "alert-" + category if category != "message" else ""}}">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
+    {% block scripts %}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <div class="footer">
-      <div class="container">
-        <p class="muted">
-          <a href="mailto:&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;">&#114;&#111;&#098;&#064;&#114;&#106;&#097;&#099;&#107;&#115;&#111;&#110;&#046;&#109;&#101;</a>.
-          <a href="http://github.com/RJacksonm1/vdfjson">Code on GitHub.</a>
-          Uses Lagg's vdf.py from <a href="http://github.com/Lagg/steamodd">steamodd</a>.
-        </p>
-      </div>
-    </div>
+            ga('create', 'UA-42425997-1', 'rjackson.me');
+            ga('send', 'pageview');
+        </script>
+        <script type="text/javascript">
+            // Javascript to enable link to tab
+            var hash = document.location.hash;
+            var prefix = "tab_";
+            if (hash) {
+                $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+            }
 
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
+            // Change hash for page-reload
+            $('.nav-tabs a').on('click', function (e) {
+                window.location.hash = e.target.hash.replace("#", "#" + prefix);
+            });
+        </script>
+    {% endblock %}
+</body>
 </html>
