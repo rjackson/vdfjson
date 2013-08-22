@@ -87,19 +87,9 @@
             ga('create', 'UA-42425997-1', 'rjackson.me');
             ga('send', 'pageview');
         </script>
-        <script type="text/javascript">
-            // Javascript to enable link to tab
-            var hash = document.location.hash;
-            var prefix = "tab_";
-            if (hash) {
-                $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
-            }
-
-            // Change hash for page-reload
-            $('.nav-tabs a').on('click', function (e) {
-                window.location.hash = e.target.hash.replace("#", "#" + prefix);
-            });
-        </script>
     {% endblock %}
 </body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
