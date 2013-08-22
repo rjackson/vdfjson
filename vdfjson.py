@@ -1,11 +1,11 @@
-from flask import Flask, flash, request, render_template
+from flask import Blueprint, flash, request, render_template
 from steam import vdf
 import json
 
-app = Flask(__name__)
+vdfjson = Blueprint("vdfjson", __name__, template_folder="templates")
 
 
-@app.route('/', methods=["GET", "POST"])
+@vdfjson.route('/', methods=["GET", "POST"])
 def index():
     response = None
     format = "json"
@@ -28,8 +28,4 @@ def index():
             flash("ValueError:  Your {} may not be valid.".format(format), "danger")
             response = "{}" if format == "json" else ""
 
-    return render_template("index.html", response=response, format=format, title="vdfjson")
-
-
-if __name__ == '__main__':
-    app.run()
+    return render_template("vdfjson.html", response=response, format=format, title="vdfjson")
