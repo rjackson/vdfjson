@@ -3,23 +3,20 @@
 {% block tagline %}VDF ↔ JSON{% endblock %}
 
 {% block content %}
-    <div class="row">
     <p>A simple tool to convert between <a href="http://wiki.teamfortress.com/wiki/WebAPI/VDF" title="Valve Data Format on the Team Fortress Wiki">Valve Data Format</a> and <a href="http://json.org/" title="Pls, you already know what JSON is.">JSON</a>.</p>
 
-    <form class="col-xs-12" action="" method="post">
-        <textarea class="form-control" rows="20" name="data">{{ response if response }}</textarea>
+    <form method="post">
+        <textarea style="height: 100%" rows="20" name="data">{{ response if response }}</textarea>
 
         <label class="radio">
-            <input type="radio" name="format" id="formatRadio1" value="vdf" {{ "checked" if format == "json" }}>
+            <input type="radio" name="format" value="vdf" {{ "checked" if format == "json" }}>
             I certify, to the greatest of my knowledge, that the above text is VDF.
         </label>
         <label class="radio">
-            <input type="radio" name="format" id="formatRadio2" value="json" {{ "checked" if format == "vdf" }}>
+            <input type="radio" name="format" value="json" {{ "checked" if format == "vdf" }}>
             I certify, to the greatest of my knowledge, that the above text is JSON.
         </label>
 
         <button class="btn btn-primary btn-lg btn-block" type="submit">Do things!</button>
     </form>
-
-    </div>
 {% endblock %}
