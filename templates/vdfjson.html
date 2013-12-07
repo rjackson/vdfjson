@@ -17,6 +17,12 @@
             I certify, to the greatest of my knowledge, that the above text is JSON.
         </label>
 
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Do things!</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="vdfjson_submit">Do things!</button>
     </form>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for("vdfjson.static", filename="js/vdf.js") }}"></script>
+    <script src="{{ url_for("vdfjson.static", filename="js/vdfjson.js") }}"></script>
 {% endblock %}
