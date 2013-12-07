@@ -2,7 +2,7 @@ from flask import Blueprint, flash, request, render_template
 from steam import vdf
 import json
 
-vdfjson = Blueprint("vdfjson", __name__, template_folder="templates")
+vdfjson = Blueprint("vdfjson", __name__, template_folder="templates", static_folder="static")
 
 
 @vdfjson.route('/', methods=["GET", "POST"])
